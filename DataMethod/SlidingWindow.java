@@ -8,7 +8,7 @@ import java.util.*;
 
 import sun.security.x509.AVA;
 
-public class SlidingWindow extends Calculate {
+public class SlidingWindow extends CalculateOSX {
 
 	/*
 	 * 

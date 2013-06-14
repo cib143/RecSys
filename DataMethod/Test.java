@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 
 
 
-public class Test extends Calculate {
+public class Test extends CalculateOSX {
 
 	private static void fillArray(Integer[][] daten) {
 

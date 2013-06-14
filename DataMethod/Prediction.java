@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 
-public class Prediction extends Calculate {
+public class Prediction extends CalculateOSX {
 
 	static LinkedList<Double> xList = new LinkedList<Double>();
 	static LinkedList<Double> yList = new LinkedList<Double>();

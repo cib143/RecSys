@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.*;
 import org.jfree.data.statistics.Regression;
 
-public class LinReg extends Calculate {
+public class LinReg extends CalculateOSX {
 
 	/*
 	 * 
