@@ -96,6 +96,7 @@ public class Prediction extends CalculateOSX {
 		return getAverage(filmId, av, c);
 	}
 
+	@SuppressWarnings("unused")
 	private static double get_average_each_time(File file, int filmId,
 			long date1, long date2) {
 		int av = 0;
@@ -198,76 +199,6 @@ public class Prediction extends CalculateOSX {
 		return arrayMedian;
 	}
 
-	private static double getLinReg(File file, int filmId) {
-		xList.clear();
-		yList.clear();
-		int c = 1;
-		String zeile = "";
-
-		try {	
-			BufferedReader b = new BufferedReader( // Init new reader
-			new FileReader(file)); // File to read
-			while ((zeile = b.readLine()) != null) { // Liest Zeile für Zeile
-			String[] splitResult = zeile.split(",");
-				if (Integer.parseInt(splitResult[0]) == filmId) {
-					xList.add((double) c);
-					yList.add(Double.parseDouble(splitResult[2]));
-					c++;
-				}
-			}
-			b.close(); // closes reader
-		} catch (IOException e) {
-			System.out.println("Error: " + e.toString());
-		}
-		int count = xList.size();
-		double[] xArray = new double[count];
-		double[] yArray = new double[count];
-		int i = 0;
-		for (Double value : xList) {
-			xArray[i] = value;
-			++i;
-		}
-		i = 0;
-		for (Double value : yList) {
-			yArray[i] = value;
-			++i;
-		}
-		double xSumme = 0;
-		double ySumme = 0;
-		for (i = 0; i < xArray.length; ++i) {
-			xSumme += xArray[i];
-			ySumme += yArray[i];
-		}
-		// Durchschnitt x & y
-		double xMean = xSumme / (double) xArray.length;
-		double yMean = ySumme / (double) yArray.length;
-
-		// System.out.println("x Durchschnitt : " + xMean);
-		// System.out.println("y Durchschnitt : " + yMean);
-
-		double m1 = 0;
-		double m2 = 0;
-		for (i = 0; i < xArray.length; ++i) {
-			m1 += xArray[i] * yArray[i];
-			m2 += xArray[i] * xArray[i];
-		}
-
-		m1 -= ((double) xArray.length) * xMean * yMean;
-		m2 -= ((double) xArray.length) * xMean * xMean;
-
-		double m = m1 / m2;
-		double n = yMean - m * xMean;
-		// System.out.println("Geradengleichung : " + m + " * x + " + n);
-		if (xList.isEmpty()) {
-			 System.out.println(filmId);
-			 System.out.println("EEE");
-			return 3;
-		}
-		next = m * (xList.getLast() + 1) + n;
-		// System.out.println("Prediction is: " + next);
-		return next;
-
-	}
 
 	private static double getAverage(int filmId, int av, int c) {
 		double d;
@@ -364,9 +295,7 @@ public class Prediction extends CalculateOSX {
 
 		// writes logfile
 		Auswertung.writeLog(c, target);
-		Auswertung.addCounter(c);
-		Auswertung.addRMSEtoFile(c);
-
+		
 	}
 
 	public static void main(String[] args) {

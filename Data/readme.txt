@@ -38,3 +38,10 @@ Movielens:
 Netflix:
 2649429 Users
 17770 Movies
+
+-
+
+Netflix small:
+max. 300000 Users
+6760 Movies
+

@@ -4,44 +4,41 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 
 
-	// TIMESTAMP ERSTELLEN
 
 
 
 
 public class Test extends CalculateOSX {
 
-	private static void fillArray(Integer[][] daten) {
+	public static void read(String file) {
 
-		int c = 0;
 		String zeile = "";
-
 		try {
 
 			BufferedReader b = new BufferedReader( // Init new reader
-					new FileReader(source)); // File to read
+
+					new FileReader(file)); // File to read
 			while ((zeile = b.readLine()) != null) { // Liest Zeile fŸr Zeile
-				String[] splitResult = zeile.split(","); // Ğ> splitten an den
-															// Kommata
 
+				String[] splitResult = zeile.split(",");
 				
-					c++;
+				
+				if (Integer.parseInt(splitResult[1]) <= 300000) {
+					
 
-					daten[c - 1][0] = Integer.parseInt(splitResult[0]);
-					daten[c - 1][1] = Integer.parseInt(splitResult[1]);
-					daten[c - 1][2] = Integer.parseInt(splitResult[2]);
-					daten[c - 1][3] = Integer.parseInt(splitResult[3]);
-
-					// System.out.println(daten[c-1][0]+" "+daten[c-1][1]+" "+daten[c-1][2]+" "+daten[c-1][3]);
+					Writer.writestring(zeile, new File("./Data/netflix_small.txt"));
+		
+					//System.out.println(zeile);
 
 				}
-			
+		
+				
+				
+				
+			}
 
 			b.close(); // closes reader
 		}
@@ -53,57 +50,22 @@ public class Test extends CalculateOSX {
 	}
 	
 	
-	public static int countRatings(File file){
-		
-		
-		
-
-		int c = 0;
-		String zeile = "";
-
-		try {
-
-			BufferedReader b = new BufferedReader( // Init new reader
-					new FileReader(source)); // File to read
-			while ((zeile = b.readLine()) != null) { // Liest Zeile fŸr Zeile
-				
-
-				
-					c++;
-
-System.out.println(c);
-					
-				}
-			
-
-			b.close(); // closes reader
-		} catch (IOException e) {
-			System.out.println("Error: " + e.toString());
-		}
-		return c;
-		
-	}
-	
-	private static void plotArray(Integer[][] daten) {
-
-		for (int i = 0; i < daten.length; i++) {
-			System.out.println(daten[i][0] + " " + daten[i][1] + " "
-					+ daten[i][2] + " " + daten[i][3]);
-		}
-	}
-	
 	
 	public static void main(String[] args) {
 		
 		
 		
-		System.out.println(countRatings(source));
-		
-		Integer[][] daten = new Integer[countRatings(source)][4];
+		read(new String("/Users/Chrissi/Desktop/software projekt datenbank/Quelldaten/netflix_ts.txt"));
 		
 		
-		//fillArray(daten);
-		System.out.println(daten.length);
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }

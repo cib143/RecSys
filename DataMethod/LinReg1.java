@@ -92,6 +92,7 @@ public class LinReg1 extends CalculateOSX {
 
 	}
 
+	@SuppressWarnings("unused")
 	private static void plotArray(Integer[][] daten) {
 
 		for (int i = 0; i < daten.length; i++) {
