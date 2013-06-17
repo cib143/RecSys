@@ -71,7 +71,7 @@ public class Test extends CalculateOSX {
 				
 					c++;
 
-
+System.out.println(c);
 					
 				}
 			

@@ -293,7 +293,7 @@ public class Prediction extends CalculateOSX {
 
 	}
 
-	public static void exec(int c) {
+	public static void exec(int c, File target) {
 
 		// to start with a clean target file
 		if (target.exists()) {
@@ -341,30 +341,18 @@ public class Prediction extends CalculateOSX {
 			// LinReg
 			
 			
-			LinReg1.execLinReg();
+			LinReg1.execLinReg(target);
 			
 			
 			
-			
-		/*	for (int i = 1; i < moviez + 1; i++) {
-				addrow_single(source, getLinReg(source, i), i, target);
-	*/
 			
 		}
-
-		/*else if (c == 8) {
-			// Calculate with time window
-			for (int i = 1; i < moviez + 1; i++) {
-				addrow_single(source, Prediction.get_average_each_time(source,
-						i, date1, date2), i, target);
-			}
-		}*/
 
 		
 		else if (c == 8) {
 			// Calculate with time window
 			
-			SlidingWindow.calculateAvgInTimeWindow();
+			SlidingWindow.calculateAvgInTimeWindow(target);
 			
 			}
 		
@@ -375,7 +363,9 @@ public class Prediction extends CalculateOSX {
 			System.out.println("Error");
 
 		// writes logfile
-		Auswertung.writeLog(c);
+		Auswertung.writeLog(c, target);
+		Auswertung.addCounter(c);
+		Auswertung.addRMSEtoFile(c);
 
 	}
 

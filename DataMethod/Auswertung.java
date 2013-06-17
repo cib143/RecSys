@@ -68,7 +68,7 @@ public class Auswertung extends CalculateOSX {
 
 	}
 
-	public static void writeLog(int c) {
+	public static void writeLog(int c, File target) {
 
 		Date date = new Date();
 
@@ -84,14 +84,115 @@ public class Auswertung extends CalculateOSX {
 		System.out.println("Logfile is stored to " + log);
 
 	}
+	
+	
+	public static void addCounter (int movieID){
+		
+		
+		System.out.println("FŸgt die Anzahl der Bewertungen je Film zu");
+		
+		
+		for(int x = 1; x<=moviez;x++){
+			
+			
+			
+		int counter = (int)LinReg1.countMovies(source, x);	
+			
+			
+		Convert.addrow_single(new File("./Data/movielens/method"+movieID+".txt"), counter, x, new File("./Data/movielens/method"+movieID+"_.txt"));
+		
+		}
+		
+		
+		new File("./Data/movielens/method"+movieID+".txt").delete();
+		System.out.println("Done");
+		
+		
+	}
+	
+	
+	public static void calcRMSEtoFile(int movie){
+		
+		
+		double c = 0;
+		double sum = 0, dummsum = 0;
 
-	public static void main(String[] args) {
+		String zeile = "";
+		try {
 
-	getError(new File("./data/JfreelinReg_movie20_.txt"));
+			BufferedReader b = new BufferedReader( // Init new reader
+
+					new FileReader("./Data/movielens/method1_.txt")); // File to read
+
+			b.readLine();
+			while ((zeile = b.readLine()) != null) { // Liest Zeile fŸr Zeile
+				String[] splitResult = zeile.split(","); // Ð> splitten an den Kommata														
+				
+				if(Integer.parseInt(splitResult[0]) == movie){
+				
+				// Echte Bewertung
+				double err1 = Double.parseDouble(splitResult[2]);
+				// Vorhersage
+				double err2 = Double.parseDouble(splitResult[4]);
+				//Just whole star ratings!
+				err2 = Math.round(err2);
+				// Summe
+				c++;			
+				// Calculate RMSE-SUM
+				sum = sum + Math.abs((err1 - err2));
+				// Calculate MAE-SUM
+				dummsum = dummsum + Math.pow((err1 - err2), 2);	
+				
+				}	
+			}
+			b.close(); // closes reader
+
+			// Calculate RMSE
+			rmse = (Math.sqrt(sum / c));
+			
+			
+
+			System.out.println(rmse);
+			
+			
+			
+		}
+
+		catch (IOException e) {
+			System.out.println("Error: " + e.toString());
+		}
+
+	}	
+		
+		
+		
+	
+	public static void addRMSEtoFile(int c){
+		
+		
+		
+		
+			
+			for(int i = 1;i<moviez+1;i++){
+			calcRMSEtoFile(i);
+			Convert.addrow_single(new File("./Data/movielens/method"+c+"_.txt"), rmse, i, new File("./Data/movielens/method"+c+"_withRMSE"));	
+			
+			
+			
+			}
+			new File("./Data/movielens/method"+c+"_.txt").delete();	
+	}
+		
 		
 	
 	
 	
-	}
 
+	public static void main(String[] args) {
+
+	
+
+	
+	}
 }
+

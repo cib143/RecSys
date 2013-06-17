@@ -54,7 +54,7 @@ public class LinReg1 extends CalculateOSX {
 
 	}
 
-	private static int countMovies(File file, int filmId) {
+	public static int countMovies(File file, int filmId) {
 
 		int c = 0;
 		String zeile = "";
@@ -100,7 +100,7 @@ public class LinReg1 extends CalculateOSX {
 		}
 	}
 
-	private static void getLinReg(Integer[][] daten, int mId) {
+	private static void getLinReg(Integer[][] daten, int mId, File target) {
 
 		LinkedList<Integer> xList = new LinkedList<Integer>();
 		LinkedList<Integer> yList = new LinkedList<Integer>();
@@ -184,7 +184,7 @@ public class LinReg1 extends CalculateOSX {
 	
 	
 	
-	public static void execLinReg(){
+	public static void execLinReg(File target){
 		
 		
 		int mId = 1;
@@ -202,7 +202,7 @@ public class LinReg1 extends CalculateOSX {
 			sortOnArray(daten);
 			
 			//plotArray(daten);
-			getLinReg(daten, mId);
+			getLinReg(daten, mId, target);
 
 			mId++;
 		}

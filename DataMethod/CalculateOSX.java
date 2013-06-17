@@ -10,17 +10,21 @@ public class CalculateOSX extends Convert {
 	
 	// FIlE DEFINITION
 
-	public static File source = new File("./data/movielens_2.txt"); // also see readme.txt
+
+	
+	
+	
+	public static File source = new File("./Data/movie20_.txt"); // also see readme.txt
 	static File log = new File("./Data/log.txt");
 	
-	public static File target = new File("./Data/movielens_linreg.txt"); //Temp File for Predictions
+	
 	
 	
 	
 	// ANZAHL FILME IN DATEI "source"
 
 	
-		static int moviez = 3952;
+		static int moviez = 20;
 	
 	
 	
@@ -39,14 +43,19 @@ public class CalculateOSX extends Convert {
 		// Calculates method 1 to 7
 
 		
-	/*	  for(int i=1;i<8;i++){
+		  for(int i=1;i<8;i++){
 		  
 		  System.out.println(); System.out.println("Now computing: Method "+i);
 		  
-		  Prediction.exec(i);
+		  
+
+			File target = new File("./Data/movielens/method"+i+".txt"); //Temp File for Predictions
+		  
+		  
+		  Prediction.exec(i,target);
 		 
 		  }
-	*/	 
+		 
 
 		
 		
@@ -59,9 +68,15 @@ public class CalculateOSX extends Convert {
 	
 		
 	
-		Prediction.exec(7);
+	//	Prediction.exec(1);
 		
-	
+			
+		
+		
+		
+		
+		
+		
 		
 		
 		

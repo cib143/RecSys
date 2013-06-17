@@ -197,7 +197,7 @@ public class SlidingWindow extends CalculateOSX {
 	}
 	
 	
-	public static void calculateAvgInTimeWindow(){
+	public static void calculateAvgInTimeWindow(File target){
 		
 		
 		for(int mId = 1;mId < moviez+1 ;mId++){
@@ -289,7 +289,7 @@ System.out.println(getAvgOfList(getLists(daten,0)));
 		
 		*/
 		
-		SlidingWindow.calculateAvgInTimeWindow();	
+	
 		
 		
 	}
