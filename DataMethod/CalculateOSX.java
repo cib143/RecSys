@@ -24,7 +24,7 @@ public class CalculateOSX extends Convert {
 	// ANZAHL FILME IN DATEI "source"
 
 	
-		static int moviez = 6760;
+		static int moviez = 3952;
 	
 	
 	
