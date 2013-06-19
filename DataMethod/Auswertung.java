@@ -115,7 +115,7 @@ public class Auswertung extends CalculateOSX {
 		
 		
 		double c = 0;
-		double sum = 0, dummsum = 0;
+		double rmseSum = 0, maeSum = 0;
 
 		String zeile = "";
 		try {
@@ -139,21 +139,18 @@ public class Auswertung extends CalculateOSX {
 				// Summe
 				c++;			
 				// Calculate RMSE-SUM
-				sum = sum + Math.abs((err1 - err2));
+				rmseSum = rmseSum + Math.abs((err1 - err2));
 				// Calculate MAE-SUM
-				dummsum = dummsum + Math.pow((err1 - err2), 2);	
+				maeSum = maeSum + Math.pow((err1 - err2), 2);	
 				
 				}	
 			}
 			b.close(); // closes reader
 
 			// Calculate RMSE
-			rmse = (Math.sqrt(sum / c));
+			rmse = (Math.sqrt(rmseSum / c));
 			
-			
-
 			System.out.println(rmse);
-			
 			
 			
 		}
@@ -183,16 +180,6 @@ public class Auswertung extends CalculateOSX {
 			new File("./Data/movielens/method"+c+"_.txt").delete();	
 	}
 		
-		
 	
-	
-	
-
-	public static void main(String[] args) {
-
-	
-
-	
-	}
 }
 

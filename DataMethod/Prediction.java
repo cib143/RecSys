@@ -199,7 +199,6 @@ public class Prediction extends CalculateOSX {
 		return arrayMedian;
 	}
 
-
 	private static double getAverage(int filmId, int av, int c) {
 		double d;
 		if (c == 0) {
@@ -209,19 +208,6 @@ public class Prediction extends CalculateOSX {
 			d = (av / c);
 		}
 		return d;
-	}
-
-	public static void test(String file) {
-
-		String example = "1,822109,5,2005-05-13";
-		String[] splitResult = example.split(","); // Ð> splitten an den
-													// Leerzeichen
-
-		System.out.println(splitResult[0]);
-		System.out.println(splitResult[1]);
-		System.out.println(splitResult[2]);
-		System.out.println(splitResult[3]);
-
 	}
 
 	public static void exec(int c, File target) {
@@ -270,34 +256,23 @@ public class Prediction extends CalculateOSX {
 
 		else if (c == 7) {
 			// LinReg
-			
-			
+
 			LinReg1.execLinReg(target);
-			
-			
-			
-			
+
 		}
 
-		
 		else if (c == 8) {
 			// Calculate with time window
-			
+
 			SlidingWindow.calculateAvgInTimeWindow(target);
-			
-			}
-		
-		
-		
-		
+
+		}
+
 		else
 			System.out.println("Error");
 
 		// writes logfile
 		Auswertung.writeLog(c, target);
-		
-	}
 
-	public static void main(String[] args) {
 	}
 }

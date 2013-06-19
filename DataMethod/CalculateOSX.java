@@ -4,81 +4,39 @@ import java.io.File;
 
 public class CalculateOSX extends Convert {
 
-	
-	
-	
-	
 	// FIlE DEFINITION
 
-
-	
-	
-	
-	public static File source = new File("./Data/netflix_small.txt"); // also see readme.txt
+	public static File source = new File("./Data/netflix_small.txt"); // also
+																		// see
+																		// readme.txt
 	static File log = new File("./Data/log.txt");
-	
-	
-	
-	
-	
+
 	// ANZAHL FILME IN DATEI "source"
 
-	
-		static int moviez = 3952;
-	
-	
-	
-	// DATES FOR MEHTOD 8- "Zeitfenster" 
+	static int moviez = 3952;
 
+	// DATES FOR MEHTOD 8- "Zeitfenster"
 
 	static int windowSize = 200;
-	
-	
-	
-	
+
 	public static void main(String[] args) {
 
 		// Calculates method 1 to 8, 8 mit TimeWindows = 200
 
-		
-		  for(int i=1;i<9;i++){
-		  
-		  System.out.println(); System.out.println("Now computing: Method "+i);
-		  
-		  
+		for (int i = 1; i < 9; i++) {
 
-			File target = new File("./Data/netflix/method"+i+".txt"); //Temp File for Predictions
-		  
-		  
-		  Prediction.exec(i,target);
-		 
-		  }
-		 
+			System.out.println();
+			System.out.println("Now computing: Method " + i);
 
-		
-		
-		//Prediction.exec(7);
-		
-		
-		
-		
-		// SINGLE CALCULATOR
-	
-		
-	
-	//	Prediction.exec(1);
-		
-			
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
+			File target = new File("./Data/netflix/method" + i + ".txt"); // Temp
+																			// File
+																			// for
+																			// Predictions
+
+			Prediction.exec(i, target);
+
+		}
+
 	}
 
 }

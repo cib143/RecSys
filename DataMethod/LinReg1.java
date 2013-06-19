@@ -8,17 +8,6 @@ import java.util.*;
 
 public class LinReg1 extends CalculateOSX {
 
-	/*
-	 * 
-	 * 
-	 * 
-	 * 
-	 */
-
-	
-
-	// System.out.println(countMovies(new File("./Data/movie20_.txt"), 1));
-
 	private static void fillArray(Integer[][] daten, int movieID) {
 
 		int c = 0;
@@ -39,8 +28,6 @@ public class LinReg1 extends CalculateOSX {
 					daten[c - 1][1] = Integer.parseInt(splitResult[1]);
 					daten[c - 1][2] = Integer.parseInt(splitResult[2]);
 					daten[c - 1][3] = Integer.parseInt(splitResult[3]);
-
-			
 
 				}
 			}
@@ -130,38 +117,50 @@ public class LinReg1 extends CalculateOSX {
 		int[] xArray = new int[count];
 		int[] yArray = new int[count];
 		int i = 0;
+
 		for (Integer value : xList) {
 			xArray[i] = value;
 			++i;
 		}
+
 		i = 0;
+
 		for (Integer value : yList) {
 			yArray[i] = value;
 			++i;
 		}
+
 		double xSumme = 0;
 		double ySumme = 0;
+
 		for (i = 0; i < xArray.length; ++i) {
 			xSumme += xArray[i];
 			ySumme += yArray[i];
 		}
+
 		// Durchschnitt x & y
 		double xMean = xSumme / (double) xArray.length;
 		double yMean = ySumme / (double) yArray.length;
 
-		// System.out.println("x Durchschnitt : " + xMean);
-		// System.out.println("y Durchschnitt : " + yMean);
 
 		double m1 = 0;
 		double m2 = 0;
+		
+		
 		for (i = 0; i < xArray.length; ++i) {
 			m1 += xArray[i] * yArray[i];
 			m2 += xArray[i] * xArray[i];
 		}
+		
+		
+		
 
 		m1 -= ((double) xArray.length) * xMean * yMean;
 		m2 -= ((double) xArray.length) * xMean * xMean;
 
+		
+		
+		
 		double m = m1 / m2;
 		double n = yMean - m * xMean;
 
@@ -175,53 +174,31 @@ public class LinReg1 extends CalculateOSX {
 		}
 		int next = (int) (m * (xList.getLast() + 1) + n);
 
-		
-		if (next <= 0) return 1;
-		else if (next > 5) return 5;
-		
+		if (next <= 0)
+			return 1;
+		else if (next > 5)
+			return 5;
+
 		return next;
 
 	}
-	
-	
-	
-	public static void execLinReg(File target){
-		
-		
-		int mId = 1;
 
+	public static void execLinReg(File target) {
+
+		int mId = 1;
 		while (mId <= moviez) {
 
 			System.out.println(mId);
 
 			Integer[][] daten = new Integer[countMovies(source, mId)][4];
-			
-			
-			
 
 			fillArray(daten, mId);
 			sortOnArray(daten);
-			
-			//plotArray(daten);
+
+			// plotArray(daten);
 			getLinReg(daten, mId, target);
 
 			mId++;
 		}
-		
-		
 	}
-
-	public static void main(String[] args) {
-
-		
-		
-
-		
-		
-	
-		
-		}
-
-	}
-
-
+}
