@@ -5,35 +5,22 @@ import java.io.File;
 public class CalculateOSX extends Convert {
 
 	
-	
-	
-	
 	// FIlE DEFINITION
-
-
-	
-	
 	
 	public static File source = new File("./Data/netflix_small.txt"); // also see readme.txt
 	static File log = new File("./Data/log.txt");
 	
-	
-	
-	
-	
+		
 	// ANZAHL FILME IN DATEI "source"
 
 	
 		static int moviez = 3952;
 	
 	
-	
 	// DATES FOR MEHTOD 8- "Zeitfenster" 
 
 
 	static int windowSize = 200;
-	
-	
 	
 	
 	public static void main(String[] args) {
@@ -46,20 +33,17 @@ public class CalculateOSX extends Convert {
 		  System.out.println(); System.out.println("Now computing: Method "+i);
 		  
 		  
-
 			File target = new File("./Data/netflix/method"+i+".txt"); //Temp File for Predictions
 		  
 		  
 		  Prediction.exec(i,target);
 		 
 		  }
-		 
-
-		
 		
 		//Prediction.exec(7);
 		
 		
+	
 		
 		
 		// SINGLE CALCULATOR
